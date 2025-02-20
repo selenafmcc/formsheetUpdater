@@ -34,8 +34,6 @@ function onSheetChange() {
   //3: Updates the form itself to show the NEW list of fighters
   updateForm();
 
-
-  //fighterSheet.getRange('G2').setValue(counter);
   }
 
 function reorderSubs() {
@@ -44,7 +42,7 @@ function reorderSubs() {
 }
 
 function newTopTen() {
-  //Iterate through all the rows in the submissions and grab the top 10 fighters.
+  //Iterate through all the rows in the submissions and grab the newest 10 fighters.
   //Fighters cannot be incinerated, banned by a Mod, or anyone who skipped to the end.
 
   topTen = []; topMoves = []; topQuote = [];
@@ -77,6 +75,7 @@ function newTopTen() {
       if (subRange.getCell(i,9).getValue() != "Flogdor the Incinerator"){
         //Add to Top 10 if there is room.
         if (count < topNum) {
+          //Old version. New version only needs prevTen list
           //topTen.push(subRange.getCell(i,10).getValue());
           //topMoves.push(subRange.getCell(i,6).getValue());
           //topQuote.push(subRange.getCell(i,7).getValue());
@@ -93,21 +92,18 @@ function newTopTen() {
   }
 
   //Update the Top 10 fighters
-
   topTen = prevTen; topMoves = prevMoves; topQuote = prevQuote;
 
   for (i=1; i<=topNum; i++) {
     fighterSheet.getRange(i+3, 2).setValue(topTen[i-1]);
     fighterSheet.getRange(i+3, 3).setValue(topMoves[i-1]);
     fighterSheet.getRange(i+3, 4).setValue(topQuote[i-1]);
-
-    //fighterSheet.getRange(i+3, 7).setValue("its " + topTen[i-1]);
   }
+  
   fighterSheet.getRange(15, 2).setValue(lastBurnt);
 
   fighterSheet.getRange('B:D').setHorizontalAlignment('center');
   fighterSheet.autoResizeColumn(2);
-
 }
 
 function updateForm() {
