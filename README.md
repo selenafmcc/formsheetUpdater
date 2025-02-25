@@ -11,3 +11,4 @@ Live demo runs <a href="https://docs.google.com/forms/d/e/1FAIpQLScvLAqfzygjUU5d
 
 # Instructions
 The script is connected to the Response Sheet, which is generated from the Form. Connecting the script to the sheet allows us to use the "on Form Submit" trigger, automatically running the script when the form is submitted. The form and sheet ID are hard-coded in, and can be changed. Certain values, like data columns and rows, will need to be modified if you are using this for your own sheet.
+The example.gs file shows the original project from a 2020 project. The code.gs file and Demo show a modern adaptation.
